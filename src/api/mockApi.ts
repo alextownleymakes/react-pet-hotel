@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { Owner, Pet, Toy } from "./types";
-import { OWNERS, PETS, TOYS } from "./mockData";
+import { Owner, Pet, Toy, User } from "./types";
+import { OWNERS, PETS, TOYS, USERS } from "./mockData";
 
 const handlers = [
   http.get<any, any, Pet[]>("/api/pets", () => {
@@ -11,6 +11,9 @@ const handlers = [
   }),
   http.get<any, any, Toy[]>("/api/toys", () => {
     return HttpResponse.json(TOYS);
+  }),
+  http.get<any, any, User[]>("/api/users", () => {
+    return HttpResponse.json(USERS);
   }),
 ];
 

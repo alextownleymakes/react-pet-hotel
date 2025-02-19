@@ -32,6 +32,10 @@ You are welcome to look up documentation for the language and libraries you use,
 
 ## Notes
 
+login page - only needs username field & button, conditional error message
+redirect based on auth
+pet list with data fetch, auth role check & conditional data disp, sort function
+
 ### UI/UX
 
 - Please use semantic HTML.
