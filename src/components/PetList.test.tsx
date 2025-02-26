@@ -1,5 +1,5 @@
-import { render, screen } from "../test-utils";
-import PetList from "./PetList";
+// import { render, screen } from "../test-utils";
+// import PetList from "./PetList";
 
 /*
   To test an error, we can use the following:

@@ -3,8 +3,11 @@ import { Owner, Pet, Toy, User } from "./types";
 import { OWNERS, PETS, TOYS, USERS } from "./mockData";
 
 const handlers = [
-  http.get<any, any, Pet[]>("/api/pets", () => {
+  http.get<any, any, Pet[]>("/api/pets/admin", () => {
     return HttpResponse.json(PETS);
+  }),
+  http.get<any, any, Pet[]>("/api/pets/staff", () => {
+    return HttpResponse.json([...PETS].filter((pet) => pet.checkedIn));
   }),
   http.get<any, any, Owner[]>("/api/owners", () => {
     return HttpResponse.json(OWNERS);

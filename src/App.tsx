@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
-function App() {
+const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
@@ -16,6 +16,9 @@ function App() {
           </Route>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/:u">
+            <HomePage />
           </Route>
         </Switch>
       </Router>

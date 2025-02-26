@@ -1,12 +1,14 @@
+import React from "react";
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { User } from "../api/types";
+import { evaluateCredentials } from "../utils/utils";
 
-function LoginPage() {
+const LoginPage: React.FC = () => {
 
   const [userName, setUserName] = useState('');
   const [error, setError] = useState('');
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [location, navigate] = useLocation();
 
   const login = async () => {
@@ -19,27 +21,27 @@ function LoginPage() {
 
       const users = await res.json();
 
-      const authenticated = evaluateCredentials(users);
+      const authenticated = evaluateCredentials(users, userName);
       
       if (authenticated) {
-        navigate('/');
+        navigate(`/${userName}`);
       } else {
         setError('Username not valid.');
       }
       
-    } catch(error: any) {
-      setError(error)
+    } catch(error) {
+      setError(error as string)
     }
   }
 
-  const evaluateCredentials = (users: User[]) => users.find(user => user.username === userName);
-
   return (
-    <div>
+    <div style={{width: '60vw', height: '100vh', margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <h1>Login</h1>
-      <input placeholder="Username" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
-      <button type="button" onClick={login}>Submit</button>
-      {error && <p>{error}</p>}
+      <form action={login} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <input style={{padding: 10, borderRadius: 20, fontSize: 16}} placeholder="Username" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+      <button style={{padding: 10, fontSize: 16}} type="submit">Submit</button>
+      </form>
+      {error && <p style={{color: '#d20'}}>{error}</p>}
     </div>
   );
 }

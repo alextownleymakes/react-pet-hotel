@@ -6,6 +6,7 @@ const queryClient = new QueryClient();
 
 const render = (ui: ReactNode) => {
   return baseRender(
+    // eslint-disable-next-line react/react-in-jsx-scope
     <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
   );
 };
