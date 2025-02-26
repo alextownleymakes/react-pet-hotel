@@ -174,27 +174,27 @@ const PetList: React.FC = () => {
         padding: 20
       }}>
 
-        {/* Header with title and logout button */}
         <div style={{
           width: '100%',
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
-          alignItems: 'center',  // Align items vertically
+          alignItems: 'center', 
           padding: '0 20px'
         }}>
           <h1>Pet List</h1>
           <button type="button" style={{border: 'none', background: 'none', cursor: 'pointer'}} onClick={() => setUser(null)}>Logout</button>
         </div>
 
-        {/* Sorting section */}
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
-          gap: 10 // Better spacing
+          alignItems: 'left',
+          textAlign: 'left',
+          gap: 10, 
+          width: '100%'
         }}>
-          <label htmlFor="sort">Sort by:</label>
+          <label htmlFor="sort"><h3 style={{marginBottom: 0}}>Filter</h3></label>
           <select
             name="sort"
             id="sort"
